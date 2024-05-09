@@ -10,8 +10,7 @@
     "enableChart": true,
     "durationFormat": "HH:mm:ss.SSS"
   },
-  "discord":
-  {
+  "discord": {
     "botToken": "",
     "channelId": "1167457336776994949"
   }
