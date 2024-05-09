@@ -22,7 +22,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Logger;
 
 @Slf4j
-public class UserExtension implements BeforeEachCallback, BeforeAllCallback {
+public class UserExtension implements BeforeEachCallback {
     public static final ExtensionContext.Namespace NAMESPACE
             = ExtensionContext.Namespace.create(UserExtension.class);
 
@@ -33,48 +33,7 @@ public class UserExtension implements BeforeEachCallback, BeforeAllCallback {
 
     }
 
-    public static void discordTokenInjection() {
-        System.out.println(System.getProperty("discordToken"));
-        String filePath = "notifications/config.json"; // Укажите путь к вашему JSON файлу
 
-        try {
-            org.slf4j.Logger logger1 = LoggerFactory.getLogger(UserExtension.class);
-
-            // Чтение JSON из файла
-            JSONParser jsonParser = new JSONParser();
-            JSONObject jsonObject = (JSONObject) jsonParser.parse(new FileReader(filePath));
-
-            // Вывод исходного JSON в консоль
-            System.out.println("Исходный JSON:");
-            System.out.println(jsonObject.toJSONString());
-
-            // Получение значения поля "plid"
-            String discordBotToken = System.getProperty("discordToken");
-
-
-            // Изменение значения поля "plid" на новое значение
-            JSONObject discordObject = (JSONObject) jsonObject.get("discord");
-            discordObject.put("botToken", discordBotToken); // Укажите ваше новое значение для "token"
-
-            jsonObject.put("discord", discordObject);
-
-
-            // Вывод измененного JSON в консоль
-            logger1.error("NEWWWWWWW");
-            logger1.error(jsonObject.toJSONString());
-            System.out.println(jsonObject.toJSONString());
-
-            // Запись измененного JSON обратно в файл
-            try (FileWriter fileWriter = new FileWriter(filePath)) {
-                fileWriter.write(jsonObject.toJSONString());
-                System.out.println("\nJSON успешно обновлен.");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        } catch (IOException | ParseException e) {
-            e.printStackTrace();
-        }
-    }
 
     @Override
     public void beforeEach(ExtensionContext context) {
@@ -91,8 +50,4 @@ public class UserExtension implements BeforeEachCallback, BeforeAllCallback {
         );
     }
 
-    @Override
-    public void beforeAll(ExtensionContext context) throws Exception {
-        discordTokenInjection();
-    }
 }
