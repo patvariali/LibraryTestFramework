@@ -18,7 +18,7 @@ public class BooksPage {
     public BooksPage() {
         PageFactory.initElements(Driver.getDriver(), this);
     }
-    private final WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(5));
+    private final WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(15));
 
     @FindBy(xpath = "//input[@type='search']")
     private WebElement searchInput;
