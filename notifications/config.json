@@ -6,7 +6,7 @@
     "comment": "Automated Allure Result from GitHub",
     "reportLink": "https://patvariali.github.io/qa-sharks-demo/ ",
     "language": "en",
-    "allureFolder": "allure-report/",
+    "allureFolder": "build/allure-report/",
     "enableChart": true,
     "durationFormat": "HH:mm:ss.SSS"
   },
