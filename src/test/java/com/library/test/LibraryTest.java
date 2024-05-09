@@ -129,7 +129,7 @@ public class LibraryTest {
 
         });
             Driver.open("https://library2.cydeo.com/login.html", LoginPage.class)
-                    .doLogin(System.getProperty("username"), System.getProperty("password"))
+                    .doLogin("librarian10@library", "libraryUser")
                     .goToBooks()
                     .search(author)
                     .checkHasBookByNameAndAuthor(name, author);
@@ -154,7 +154,7 @@ public class LibraryTest {
         Allure.step("UI, Database and API created book information must match", () -> {
 
             Driver.open("https://en.wikipedia.org/wiki/Black_hole", LoginPage.class)
-                    .doLogin(System.getProperty("username"), System.getProperty("password"))
+                    .doLogin("librarian10@library", "libraryUser")
                     .goToBooks()
                     .search(author)
                     .checkHasBookByNameAndAuthor(name, author);

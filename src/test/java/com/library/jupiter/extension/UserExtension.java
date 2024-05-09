@@ -2,7 +2,6 @@ package com.library.jupiter.extension;
 
 import com.library.jupiter.annotation.User;
 import com.library.model.apiModels.UserJson;
-import com.library.utilities.ConfigurationReader;
 import io.qameta.allure.Allure;
 import org.junit.jupiter.api.extension.BeforeEachCallback;
 import org.junit.jupiter.api.extension.ExtensionContext;
@@ -18,7 +17,7 @@ public class UserExtension implements BeforeEachCallback {
 
     private static final Map<User.UserType, UserJson> USERS = new ConcurrentHashMap<>();
     static {
-        USERS.put(User.UserType.LIBRARIAN, UserJson.simpleUser(System.getProperty("username"), System.getProperty("password")));
+        USERS.put(User.UserType.LIBRARIAN, UserJson.simpleUser("librarian10@library", "libraryUser"));
         USERS.put(User.UserType.STUDENT, UserJson.simpleUser("someEmail", "somePassword"));
 
     }
