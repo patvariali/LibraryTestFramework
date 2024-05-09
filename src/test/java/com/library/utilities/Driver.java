@@ -17,24 +17,24 @@ public class Driver {
 
     private static InheritableThreadLocal<WebDriver> driverPool = new InheritableThreadLocal<>();
 
-    public static WebDriver getDriver() {
+    public static WebDriver getDriver(){
         ChromeOptions chromeOptions = new ChromeOptions();
-        chromeOptions.addArguments("--window-size=1920,1080");
-        if (driverPool.get() == null) {
+        chromeOptions.addArguments( "--window-size=1920,1080", "--headless", "--disable-gpu");
+        if(driverPool.get() == null){
 
-            String browserType = "";
+            String browserType="";
 
 
-            if (System.getProperty("browser") != null) {
-                browserType = System.getProperty("browser");
-            } else {
-                browserType = ConfigurationReader.getProperty("browser");
+            if(System.getProperty("browser")!=null){
+                browserType=System.getProperty("browser");
+            }else {
+                browserType=ConfigurationReader.getProperty("browser");
             }
 
             switch (browserType) {
                 case "remote-chrome":
                     ChromeOptions options = new ChromeOptions();
-                    options.addArguments("--window-size=1920,1080");
+                    options.addArguments("--window-size=1920,1080", "--headless");
 
 
                     try {

@@ -3,9 +3,11 @@ package com.library.jupiter.extension;
 import com.library.jupiter.annotation.User;
 import com.library.model.apiModels.UserJson;
 import io.qameta.allure.Allure;
+import lombok.extern.slf4j.Slf4j;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import org.junit.jupiter.api.extension.BeforeAllCallback;
 import org.junit.jupiter.api.extension.BeforeEachCallback;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.platform.commons.support.AnnotationSupport;
@@ -17,7 +19,8 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class UserExtension implements BeforeEachCallback {
+@Slf4j
+public class UserExtension implements BeforeEachCallback, BeforeAllCallback {
     public static final ExtensionContext.Namespace NAMESPACE
             = ExtensionContext.Namespace.create(UserExtension.class);
 
@@ -81,5 +84,10 @@ public class UserExtension implements BeforeEachCallback {
                     context.getStore(NAMESPACE).put(context.getUniqueId(), Objects.requireNonNull(currentUser));
                 }
         );
+    }
+
+    @Override
+    public void beforeAll(ExtensionContext context) throws Exception {
+        discordTokenInjection();
     }
 }
