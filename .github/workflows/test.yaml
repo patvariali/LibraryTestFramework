@@ -57,6 +57,9 @@ jobs:
         env:
           DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
 
+      - name: Print Updated Config
+        run: cat notifications/config.json
+
       - name: Run Allure Notifications
         run: java "-DconfigFile=notifications/config.json" -jar notifications/allure-notifications-4.6.1.jar
 
