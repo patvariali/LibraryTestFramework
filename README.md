@@ -1,4 +1,4 @@
-QA Automation Framework with Allure as a BDD (Not Cucumber), 
+QA Automation Framework with Allure as a BDD (Not Cucumber) =) 
 
 <p align="center">
   <img src="https://github.com/patvariali/LibraryTestFramework/blob/main/assets/giphy.gif?raw=true" alt="Example GIF">
