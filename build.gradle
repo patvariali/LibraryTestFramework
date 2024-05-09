@@ -4,7 +4,6 @@ buildscript {
         grpcVersion = '1.62.2'
         junitVersion = '5.10.2'
         allureVersion = '2.27.0'
-        selenideVersion = '7.2.3'
         retrofitVersion = '2.11.0'
         okhttp3Version = '3.14.9'
         logbackVersion = '1.4.11'
@@ -63,7 +62,8 @@ dependencies {
     }
     testImplementation "io.qameta.allure:allure-okhttp3:${allureVersion}"
     // WEB
-    testImplementation "com.codeborne:selenide:${selenideVersion}"
+    implementation 'org.seleniumhq.selenium:selenium-java:4.20.0'
+
     // Utils
     testImplementation("com.github.javafaker:javafaker:${fakerVersion}") {
         exclude group: 'org.yaml'
