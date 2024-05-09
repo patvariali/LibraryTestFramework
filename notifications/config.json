@@ -4,7 +4,7 @@
     "project": "clouds",
     "environment": "qa",
     "comment": "Automated Allure Result from GitHub",
-    "reportLink": "https://patvariali.github.io/qa-sharks-demo/ ",
+    "reportLink": "https://patvariali.github.io/LibraryTestFramework/ ",
     "language": "en",
     "allureFolder": "allure-report/",
     "enableChart": true,
