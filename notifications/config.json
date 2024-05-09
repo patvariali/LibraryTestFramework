@@ -1,1 +1,18 @@
-{"discord":{"botToken":null,"channelId":"1167457336776994947"},"base":{"environment":"qa","reportLink":"https:\/\/patvariali.github.io\/qa-sharks-demo\/ ","logo":"","project":"clouds","comment":"Automated Allure Result from GitHub","language":"en","enableChart":true,"durationFormat":"HH:mm:ss.SSS","allureFolder":"allure-report\/"}}
+{
+  "base": {
+    "logo": "",
+    "project": "clouds",
+    "environment": "qa",
+    "comment": "Automated Allure Result from GitHub",
+    "reportLink": "https://patvariali.github.io/qa-sharks-demo/ ",
+    "language": "en",
+    "allureFolder": "allure-report/",
+    "enableChart": true,
+    "durationFormat": "HH:mm:ss.SSS"
+  },
+  "discord":
+  {
+    "botToken": "",
+    "channelId": "1167457336776994949"
+  }
+}

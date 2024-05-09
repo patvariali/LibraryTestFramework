@@ -11,6 +11,7 @@ import org.junit.jupiter.api.extension.BeforeAllCallback;
 import org.junit.jupiter.api.extension.BeforeEachCallback;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.platform.commons.support.AnnotationSupport;
+import org.slf4j.LoggerFactory;
 
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -18,6 +19,7 @@ import java.io.IOException;
 import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.logging.Logger;
 
 @Slf4j
 public class UserExtension implements BeforeEachCallback, BeforeAllCallback {
@@ -36,6 +38,8 @@ public class UserExtension implements BeforeEachCallback, BeforeAllCallback {
         String filePath = "notifications/config.json"; // Укажите путь к вашему JSON файлу
 
         try {
+            org.slf4j.Logger logger1 = LoggerFactory.getLogger(UserExtension.class);
+
             // Чтение JSON из файла
             JSONParser jsonParser = new JSONParser();
             JSONObject jsonObject = (JSONObject) jsonParser.parse(new FileReader(filePath));
@@ -56,7 +60,8 @@ public class UserExtension implements BeforeEachCallback, BeforeAllCallback {
 
 
             // Вывод измененного JSON в консоль
-            System.out.println("новый JSON:");
+            logger1.error("NEWWWWWWW");
+            logger1.error(jsonObject.toJSONString());
             System.out.println(jsonObject.toJSONString());
 
             // Запись измененного JSON обратно в файл
