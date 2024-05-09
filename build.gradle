@@ -62,7 +62,7 @@ dependencies {
     }
     testImplementation "io.qameta.allure:allure-okhttp3:${allureVersion}"
     // WEB
-    implementation 'org.seleniumhq.selenium:selenium-java:4.20.0'
+    implementation 'org.seleniumhq.selenium:selenium-java:4.17.0'
 
     // Utils
     testImplementation("com.github.javafaker:javafaker:${fakerVersion}") {
