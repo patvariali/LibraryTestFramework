@@ -1,0 +1,95 @@
+buildscript {
+    ext {
+        protobufVersion = '3.25.3'
+        grpcVersion = '1.62.2'
+        junitVersion = '5.10.2'
+        allureVersion = '2.27.0'
+        selenideVersion = '7.2.3'
+        retrofitVersion = '2.11.0'
+        okhttp3Version = '3.14.9'
+        logbackVersion = '1.4.11'
+        slf4jVersion = '2.0.9'
+        springJdbcVersion = '6.1.6'
+        springCryptoVersion = '6.2.3'
+        p6spyVersion = '3.9.1'
+        hibernateVersion = '6.4.4.Final'
+        kafkaClientsVersion = '3.7.0'
+        saajVersion = '3.0.3'
+        jakartaXmlBind = '4.0.2'
+        springDataCommonsVersion = '3.2.5'
+        wiremockVersion = '3.0.1'
+        fakerVersion = '1.0.2'
+        postgresDriverVersion = '42.7.3'
+        lombokVersion = '1.18.32'
+        userdataWsdlUrl = System.getProperty("test.env") == "docker"
+                ? "http://userdata.niffler.dc:8089/ws/userdata.wsdl"
+                : "http://127.0.0.1:8089/ws/userdata.wsdl"
+    }
+}
+
+plugins {
+    id 'java'
+    id 'io.qameta.allure' version '2.11.2'
+    id 'io.qameta.allure-adapter' version '2.11.2'
+}
+
+group = 'com.library'
+version = '1.0-SNAPSHOT'
+
+allure {
+    version.set("${allureVersion}")
+    adapter {
+        aspectjVersion.set("1.9.22")
+        autoconfigure.set(true)
+        aspectjWeaver.set(true)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'io.qameta.allure:allure-okhttp3:$LATEST_VERSION'
+    // Logs
+    testImplementation "ch.qos.logback:logback-classic:${logbackVersion}"
+    testImplementation "org.slf4j:slf4j-api:${slf4jVersion}"
+    // JUnit
+    testImplementation "org.junit.jupiter:junit-jupiter:${junitVersion}"
+    // REST
+    testImplementation "com.squareup.retrofit2:retrofit:${retrofitVersion}"
+    testImplementation "com.squareup.retrofit2:converter-jackson:${retrofitVersion}"
+    testImplementation "com.squareup.okhttp3:logging-interceptor:${okhttp3Version}"
+    testImplementation "com.squareup.okhttp3:okhttp-urlconnection:${okhttp3Version}"
+    testImplementation "org.springframework.data:spring-data-commons:${springDataCommonsVersion}"
+    // DB
+    testImplementation "org.springframework:spring-jdbc:${springJdbcVersion}"
+    testImplementation "org.postgresql:postgresql:${postgresDriverVersion}"
+    // Allure
+    testImplementation "io.qameta.allure:allure-attachments:${allureVersion}"
+    testImplementation("io.qameta.allure:allure-junit5:${allureVersion}") {
+        exclude group: "org.junit.jupiter"
+    }
+    testImplementation("io.qameta.allure:allure-selenide:${allureVersion}") {
+        exclude group: 'com.codeborne'
+    }
+    testImplementation "io.qameta.allure:allure-okhttp3:${allureVersion}"
+    // WEB
+    testImplementation "com.codeborne:selenide:${selenideVersion}"
+    // Utils
+    testImplementation("com.github.javafaker:javafaker:${fakerVersion}") {
+        exclude group: 'org.yaml'
+    }
+    testImplementation 'com.github.vertical-blank:sql-formatter:2.0.3'
+    testImplementation 'org.hamcrest:hamcrest:2.2'
+    implementation 'com.github.javafaker:javafaker:1.0.2'
+
+    // Lombok
+    testAnnotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+    testCompileOnly "org.projectlombok:lombok:${lombokVersion}"
+}
+
+
+test {
+    useJUnitPlatform()
+}
