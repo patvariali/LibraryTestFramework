@@ -1,0 +1,6 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Thu May 09 16:45:08 GMT 2024","Thu May 09 16:45:10 GMT 2024","1613","","com.library.test.LibraryTest","","com.library.test.LibraryTest","testGetSingleUserEndpoint","testGetSingleUserEndpoint(UserJson)",""
+"broken","Thu May 09 16:45:08 GMT 2024","Thu May 09 16:45:24 GMT 2024","15207","","com.library.test.LibraryTest","","com.library.test.LibraryTest","explicitlyFailedTest","explicitlyFailedTest(TestParameters)",""
+"passed","Thu May 09 16:45:08 GMT 2024","Thu May 09 16:45:14 GMT 2024","5514","","com.library.test.LibraryTest","","com.library.test.LibraryTest","testCreateBookAllLayers","testCreateBookAllLayers(TestParameters)",""
+"passed","Thu May 09 16:45:08 GMT 2024","Thu May 09 16:45:10 GMT 2024","1629","","com.library.test.LibraryTest","","com.library.test.LibraryTest","testCreateBook","testCreateBook(TestParameters)",""
+"passed","Thu May 09 16:45:08 GMT 2024","Thu May 09 16:45:10 GMT 2024","1639","","com.library.test.LibraryTest","","com.library.test.LibraryTest","testGetAllUsersEndpoint","testGetAllUsersEndpoint(List)",""
