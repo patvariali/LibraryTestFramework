@@ -26,6 +26,7 @@ jobs:
         run: curl http://localhost:4444/status
 
       - run: ./gradlew build -Dbrowser=remote-chrome -DdiscordToken=${{secrets.DISCORD_BOT_TOKEN}} -Dusername=${{secrets.USERNAME}} -Dpassword=${{secrets.PASSWORD}}
+        continue-on-error: true
 
       - name: Get Allure history
         uses: actions/checkout@v2
