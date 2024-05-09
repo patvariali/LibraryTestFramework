@@ -2,11 +2,6 @@ name: Test
 
 on: [push]
 
-env:
-    BROWSER: remote-chrome
-    USERNAME: ${{ secrets.USERNAME }}
-    PASSWORD: ${{ secrets.PASSWORD }}
-
 
 jobs:
   test:
@@ -30,14 +25,7 @@ jobs:
       - name: Check Selenoid has been started
         run: curl http://localhost:4444/status
 
-      - name: Set up configuration file
-        run: |
-          sed -i "s/^browser=.*/browser=${BROWSER}/" configuration.properties
-          sed -i "s/^username=.*/username=${USERNAME}/" configuration.properties
-          sed -i "s/^password=.*/password=${PASSWORD}/" configuration.properties
-
-      - run: ./gradlew clean test -DdiscordToken=${{secrets.DISCORD_BOT_TOKEN}}
-
+      - run: ./gradlew clean test -Dbrowser=remote-chrome -DdiscordToken=${{secrets.DISCORD_BOT_TOKEN}} -Dusername=${{secrets.USERNAME}} -Dpassword=${{secrets.PASSWORD}}
 
       - name: Get Allure history
         uses: actions/checkout@v2

@@ -154,7 +154,7 @@ public class LibraryTest {
         Allure.step("UI, Database and API created book information must match", () -> {
 
             Driver.open("https://en.wikipedia.org/wiki/Black_hole", LoginPage.class)
-                    .doLogin(ConfigurationReader.getProperty("username"), ConfigurationReader.getProperty("password"))
+                    .doLogin(System.getProperty("username"), System.getProperty("password"))
                     .goToBooks()
                     .search(author)
                     .checkHasBookByNameAndAuthor(name, author);

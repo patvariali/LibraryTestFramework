@@ -18,7 +18,7 @@ public class UserExtension implements BeforeEachCallback {
 
     private static final Map<User.UserType, UserJson> USERS = new ConcurrentHashMap<>();
     static {
-        USERS.put(User.UserType.LIBRARIAN, UserJson.simpleUser(ConfigurationReader.getProperty("username"), ConfigurationReader.getProperty("password")));
+        USERS.put(User.UserType.LIBRARIAN, UserJson.simpleUser(System.getProperty("username"), System.getProperty("password")));
         USERS.put(User.UserType.STUDENT, UserJson.simpleUser("someEmail", "somePassword"));
 
     }
