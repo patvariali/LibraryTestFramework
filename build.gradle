@@ -1,27 +1,21 @@
-buildscript {
-    ext {
-        protobufVersion = '3.25.3'
-        grpcVersion = '1.62.2'
-        junitVersion = '5.10.2'
-        allureVersion = '2.27.0'
-        retrofitVersion = '2.11.0'
-        okhttp3Version = '3.14.9'
-        logbackVersion = '1.4.11'
-        slf4jVersion = '2.0.9'
-        fakerVersion = '1.0.2'
-        postgresDriverVersion = '42.7.3'
-        lombokVersion = '1.18.32'
-        userdataWsdlUrl = System.getProperty("test.env") == "docker"
-                ? "http://userdata.niffler.dc:8089/ws/userdata.wsdl"
-                : "http://127.0.0.1:8089/ws/userdata.wsdl"
-    }
-}
 
 plugins {
     id 'java'
     id 'io.qameta.allure' version '2.11.2'
     id 'io.qameta.allure-adapter' version '2.11.2'
 }
+
+ext {
+    junitVersion = '5.10.2'
+    allureVersion = '2.27.0'
+    retrofitVersion = '2.11.0'
+    okhttp3Version = '3.14.9'
+    slf4jVersion = '2.0.9'
+    fakerVersion = '1.0.2'
+    postgresDriverVersion = '42.7.3'
+    lombokVersion = '1.18.32'
+}
+
 
 group = 'com.library'
 version = '1.0-SNAPSHOT'
@@ -40,39 +34,29 @@ repositories {
 }
 
 dependencies {
-    // Logs
-    testImplementation "ch.qos.logback:logback-classic:${logbackVersion}"
+    testImplementation 'org.seleniumhq.selenium:selenium-chrome-driver:4.17.0'
+    testImplementation 'org.seleniumhq.selenium:selenium-api:4.17.0'
+    testImplementation 'org.seleniumhq.selenium:selenium-support:4.17.0'
+    testImplementation 'org.seleniumhq.selenium:selenium-firefox-driver:4.17.0'
+
+
+    implementation 'com.googlecode.json-simple:json-simple:1.1.1'
     testImplementation "org.slf4j:slf4j-api:${slf4jVersion}"
-    // JUnit
     testImplementation "org.junit.jupiter:junit-jupiter:${junitVersion}"
-    // REST
     testImplementation "com.squareup.retrofit2:retrofit:${retrofitVersion}"
     testImplementation "com.squareup.retrofit2:converter-jackson:${retrofitVersion}"
     testImplementation "com.squareup.okhttp3:logging-interceptor:${okhttp3Version}"
     testImplementation "com.squareup.okhttp3:okhttp-urlconnection:${okhttp3Version}"
-    // DB
     testImplementation "org.postgresql:postgresql:${postgresDriverVersion}"
-    // Allure
     testImplementation "io.qameta.allure:allure-attachments:${allureVersion}"
-    testImplementation("io.qameta.allure:allure-junit5:${allureVersion}") {
-        exclude group: "org.junit.jupiter"
-    }
-    testImplementation("io.qameta.allure:allure-selenide:${allureVersion}") {
-        exclude group: 'com.codeborne'
-    }
+    testImplementation "io.qameta.allure:allure-junit5:${allureVersion}"
     testImplementation "io.qameta.allure:allure-okhttp3:${allureVersion}"
-    // WEB
-    implementation 'org.seleniumhq.selenium:selenium-java:4.17.0'
-
-    // Utils
     testImplementation("com.github.javafaker:javafaker:${fakerVersion}") {
         exclude group: 'org.yaml'
     }
     testImplementation 'com.github.vertical-blank:sql-formatter:2.0.3'
     testImplementation 'org.hamcrest:hamcrest:2.2'
     implementation 'com.github.javafaker:javafaker:1.0.2'
-
-    // Lombok
     testAnnotationProcessor "org.projectlombok:lombok:${lombokVersion}"
     testCompileOnly "org.projectlombok:lombok:${lombokVersion}"
 }
