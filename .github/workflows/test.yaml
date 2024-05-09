@@ -51,11 +51,11 @@ jobs:
       - name: Update Token
         run: |
           # Update token in the JSON file using jq and sed
-          new_token="${{ secrets.NEW_TOKEN }}"
+          new_token="${{ secrets.DISCORD_BOT_TOKEN }}"
           jq --arg new_token "$new_token" '.discord.botToken = $new_token' notifications/config.json | sed 's/\\//g' > temp.json
           mv temp.json notifications/config.json
         env:
-          NEW_TOKEN: ${{ secrets.NEW_TOKEN }}
+          DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
 
       - name: Run Allure Notifications
         run: java "-DconfigFile=notifications/config.json" -jar notifications/allure-notifications-4.6.1.jar
